@@ -1,0 +1,27 @@
+# GIT 09: Слияние с помощью rebase
+
+    git clone git@gitlab.rebrainme.com:rebrainme-devops/git-rebase.git
+    cd git-rebase/
+    git checkout develop
+    git checkout feature    
+    git checkout master
+    git branch
+
+    git checkout develop
+    git rebase feature
+        Successfully rebased and updated refs/heads/develop.
+    git checkout master
+    git rebase develop
+        Successfully rebased and updated refs/heads/master.
+
+    git remote remove origin
+    git remote -v
+    git remote add origin git@gitlab.rebrainme.com:devops_users_repos/1168/git-rebase.git
+    git remote -v
+
+    git push -u origin --all
+
+    https://gitlab.rebrainme.com/devops_users_repos/1168/git-rebase/
+
+
+

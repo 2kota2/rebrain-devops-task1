@@ -1,0 +1,41 @@
+# GIT 12: Перенос коммитов с помощью cherry-pick
+
+    git clone git@gitlab.rebrainme.com:rebrainme-devops/git-cherry-pick.git
+    git checkout develop
+    git log --oneline
+        81bb9df (HEAD -> develop, origin/develop) Simplified sum function;
+        bf38ea1 Formatted code
+        62634d3 Renamed sum function
+        643bb09 (origin/master, origin/HEAD, master) Added main server file
+        e79007f Initial commit
+    
+     git cherry-pick bf38ea1
+        Auto-merging main.go
+        CONFLICT (content): Merge conflict in main.go
+        error: could not apply bf38ea1... Formatted code
+        hint: After resolving the conflicts, mark them with
+        hint: "git add/rm <pathspec>", then run
+        hint: "git cherry-pick --continue".
+        hint: You can instead skip this commit with "git cherry-pick --skip".
+        hint: To abort and get back to the state before "git cherry-pick",
+        hint: run "git cherry-pick --abort".
+
+    git add main.go
+    git cherry-pick --continue
+        [master facd91c] Formatted code
+        Author: Vasiliy I Ozerov <vasiliyozerov@gmail.com>
+        Date: Wed Jan 9 02:43:21 2019 +0300
+        1 file changed, 55 insertions(+), 45 deletions(-)
+        rewrite main.go (70%)
+
+    git log --oneline
+        facd91c (HEAD -> master) Formatted code
+        643bb09 (origin/master, origin/HEAD) Added main server file
+        e79007f Initial commit
+
+    git remote remove origin
+    git remote add origin git@gitlab.rebrainme.com:devops_users_repos/1168/git-cherry-pick.git
+    git push -u origin --all
+
+
+    https://gitlab.rebrainme.com/devops_users_repos/1168/git-cherry-pick

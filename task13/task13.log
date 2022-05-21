@@ -1,0 +1,59 @@
+# GIT 13: Изменение истории и force push
+
+    mkdir last
+    cd last
+    git clone git@gitlab.rebrainme.com:rebrainme-devops/git-squash.git
+    cd git-squash/
+    git checkout develop
+    git checkout show
+    git checkout master
+    git remote remove origin
+    
+    git remote add origin git@gitlab.rebrainme.com:devops_users_repos/1168/rebrain-devops-task-force.git
+    git push -u origin --all
+
+    git checkout develop
+    git log --oneline
+        d658f11 (HEAD -> develop, origin/develop) Fix #5 Final!!!
+        c8957cc Fix #4
+        1346f7f Fix #3
+        ab12f7e Fix #2
+        847d11d Fix #1
+        a452cc0 Simplified sum function
+        721bbd4 (origin/show, origin/master, show, master) Added main server file
+        d2594d0 Initial commit
+    
+    git rebase --root
+или
+    git cherry -v master | wc -l
+    git rebase -i HEAD~6
+
+     git log --oneline
+        3350f42 (HEAD -> develop) Simplified sum function
+        721bbd4 (origin/show, origin/master, show, master) Added main server file
+        d2594d0 Initial commit
+
+    git push origin develop
+        To gitlab.rebrainme.com:devops_users_repos/1168/rebrain-devops-task-force.git
+        ! [rejected]        develop -> develop (non-fast-forward)
+        error: failed to push some refs to 'gitlab.rebrainme.com:devops_users_repos/1168/rebrain-devops-task-force.git'
+        hint: Updates were rejected because the tip of your current branch is behind
+        hint: its remote counterpart. Integrate the remote changes (e.g.
+        hint: 'git pull ...') before pushing again.
+        hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+    git push --force origin develop
+        Enumerating objects: 5, done.
+        Counting objects: 100% (5/5), done.
+        Delta compression using up to 4 threads
+        Compressing objects: 100% (2/2), done.
+        Writing objects: 100% (3/3), 363 bytes | 363.00 KiB/s, done.
+        Total 3 (delta 1), reused 2 (delta 1), pack-reused 0
+        remote:
+        remote: To create a merge request for develop, visit:
+        remote:   https://gitlab.rebrainme.com/devops_users_repos/1168/rebrain-devops-task-force/-/merge_requests/new?merge_request%5Bsource_branch%5D=develop
+        remote:
+        To gitlab.rebrainme.com:devops_users_repos/1168/rebrain-devops-task-force.git
+        + d658f11...3350f42 develop -> develop (forced update)
+
+    https://gitlab.rebrainme.com/devops_users_repos/1168/rebrain-devops-task-force

@@ -1,0 +1,44 @@
+# GIT 06: Создание веток и базовая работа с ними
+
+    git branch develop
+    git checkout -b feature/new-site
+        Switched to a new branch 'feature/new-site'
+    git branch
+          develop
+        * feature/new-site
+          master
+    git checkout develop
+    vim nginx.conf # worker_connections 16384
+    git add nginx.conf
+    git commit -m "Value of 'worker_connections' in nginx.conf changed to 16384"
+    vim nginx.conf
+    git add nginx.conf
+    git commit -m "The option is added: gzip_types application/json"
+        [develop 81fc337] The option is added: gzip_types application/json
+         1 file changed, 4 insertions(+), 1 deletion(-)
+    git push origin develop
+    git checkout feature/new-site
+        Switched to branch 'feature/new-site'
+    mkdir conf.d
+    touch conf.d/mysite.domain.com.conf
+    vim conf.d/mysite.domain.com.conf
+    git add conf.d/mysite.domain.com.conf
+    git commit -m "create 'mysite.domain.com.conf' configuration file with a static site description"
+        [feature/new-site dab6209] create 'mysite.domain.com.conf' configuration file with a static site description
+         1 file changed, 9 insertions(+)
+         create mode 100644 conf.d/mysite.domain.com.conf
+    git push origin feature/new-site
+        Enumerating objects: 5, done.
+        Counting objects: 100% (5/5), done.
+        Delta compression using up to 4 threads
+        Compressing objects: 100% (4/4), done.
+        Writing objects: 100% (4/4), 489 bytes | 244.00 KiB/s, done.
+        Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+        remote:
+        remote: To create a merge request for feature/new-site, visit:
+        remote:   https://gitlab.rebrainme.com/devops_users_repos/1168/rebrain-devops-task1/-/merge_requests/new?merge_request%5Bsource_branch%5D=feature%2Fnew-site
+        remote:
+        To gitlab.rebrainme.com:devops_users_repos/1168/rebrain-devops-task1.git
+         * [new branch]      feature/new-site -> feature/new-site
+    git checkout master
+    

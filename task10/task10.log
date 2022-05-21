@@ -1,0 +1,102 @@
+# GIT 10: Объединение коммитов с помощью rebase
+
+    git clone git@gitlab.rebrainme.com:rebrainme-devops/git-squash.git
+    cd git-squash
+    git checkout develop
+
+    git log --oneline
+    d658f11 (HEAD -> develop, origin/develop) Fix #5 Final!!!
+    c8957cc Fix #4
+    1346f7f Fix #3
+    ab12f7e Fix #2
+    847d11d Fix #1
+    a452cc0 Simplified sum function
+    721bbd4 (origin/show, origin/master, origin/HEAD, master) Added main server file
+    d2594d0 Initial commit
+
+    git cherry -v master
+        + a452cc074f6ababad226a3eb81523ee00a8b5ef0 Simplified sum function
+        + 847d11d029c58b6ea7ef9ca99cd934491b8f4059 Fix #1
+        + ab12f7e32d4e385a2990b3a29969baee373c6f42 Fix #2
+        + 1346f7fa995f150a17c4eb2d5e47d9cf9d365041 Fix #3
+        + c8957ccaa1be0086f0b72dc7af4bea7caea274b2 Fix #4
+        + d658f11d681ac7d56d235404006d8a508309824b Fix #5 Final!!!
+
+    git cherry -v master | wc -l
+        6
+
+    git rebase -i HEAD~6
+
+        pick a452cc0 Simplified sum function
+        pick 847d11d Fix #1
+        pick ab12f7e Fix #2
+        pick 1346f7f Fix #3
+        pick c8957cc Fix #4
+        pick d658f11 Fix #5 Final!!!
+
+        # Rebase 721bbd4..d658f11 onto 721bbd4 (6 commands)
+        #
+        # Commands:
+        # p, pick <commit> = use commit
+        # r, reword <commit> = use commit, but edit the commit message
+        # e, edit <commit> = use commit, but stop for amending
+        # s, squash <commit> = use commit, but meld into previous commit
+        # f, fixup [-C | -c] <commit> = like "squash" but keep only the previous
+        #                    commit's log message, unless -C is used, in which case
+        #                    keep only this commit's message; -c is same as -C but
+        #                    opens the editor
+        # x, exec <command> = run command (the rest of the line) using shell
+        # b, break = stop here (continue rebase later with 'git rebase --continue')
+        # d, drop <commit> = remove commit
+        # l, label <label> = label current HEAD with a name
+
+        pick a452cc0 Simplified sum function
+        squash 847d11d Fix #1
+        squash ab12f7e Fix #2
+        squash 1346f7f Fix #3
+        squash c8957cc Fix #4
+        squash d658f11 Fix #5 Final!!!
+
+    :wq
+
+        # This is a combination of 6 commits.
+        # This is the 1st commit message:
+
+        Simplified sum function
+
+        # This is the commit message #2:
+
+        Fix #1
+
+        # This is the commit message #3:
+
+        Fix #2
+
+        # This is the commit message #4:
+
+        Fix #3
+
+        # This is the commit message #5:
+
+        Fix #4
+
+        # This is the commit message #6:
+
+        Fix #5 Final!!!
+
+    оставить последний (Simplified sum function)
+    :wq
+    
+    git rebase -i HEAD~6
+        [detached HEAD 7e6b10e] Simplified sum function
+        Author: Vasiliy I Ozerov <vasiliyozerov@gmail.com>
+        Date: Wed Jan 9 02:18:46 2019 +0300
+        1 file changed, 1 insertion(+), 2 deletions(-)
+        Successfully rebased and updated refs/heads/develop.
+
+    git checkout master
+    git remote remove origin
+    git remote add origin git@gitlab.rebrainme.com:devops_users_repos/1168/git-squash.git
+    git push -u origin --all
+
+    https://gitlab.rebrainme.com/devops_users_repos/1168/git-squash/-/commits/develop

@@ -1,0 +1,93 @@
+## GIT 02: Работа с хостингами git-репозиториев
+
+Созданы следующие репозитории:
+
+1. приватный https://gitlab.rebrainme.com/devops_users_repos/1168/rebrain-devops-task1
+2. публичный https://bitbucket.org/2kota2/rebrain-devops-task1
+3. публичный https://github.com/2kota2/rebrain-devops-task1
+
+В каждый из репозиториев добавлен публичный SSH ключ.
+
+Подключения к удаленным репозиториям
+
+    git remote add origin git@gitlab.rebrainme.com:devops_users_repos/1168/rebrain-devops-task1.git
+    git remote add bitbucket git@bitbucket.org:2kota2/rebrain-devops-task1.git
+    git remote add github git@github.com:2kota2/rebrain-devops-task1.git
+
+Проверка подключений
+
+    git remote -v
+
+        bitbucket       git@bitbucket.org:2kota2/rebrain-devops-task1.git (fetch)
+        bitbucket       git@bitbucket.org:2kota2/rebrain-devops-task1.git (push)
+        github  git@github.com:2kota2/rebrain-devops-task1.git (fetch)
+        github  git@github.com:2kota2/rebrain-devops-task1.git (push)
+        origin  git@gitlab.rebrainme.com:devops_users_repos/1168/rebrain-devops-task1.git (fetch)
+        origin  git@gitlab.rebrainme.com:devops_users_repos/1168/rebrain-devops-task1.git (push)
+
+Загружаем локальный репозиторий в удаленные
+
+    git push -u origin master
+        The authenticity of host 'gitlab.rebrainme.com (84.201.152.159)' can't be established.
+        ED25519 key fingerprint is SHA256:DW5OXaKcRB232Fi/QxU3Y83yTdhyVpBxegq+dhvPj7Y.
+        This key is not known by any other names
+        Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+        Warning: Permanently added 'gitlab.rebrainme.com' (ED25519) to the list of known hosts.
+        Enumerating objects: 6, done.
+        Counting objects: 100% (6/6), done.
+        Delta compression using up to 4 threads
+        Compressing objects: 100% (5/5), done.
+        Writing objects: 100% (6/6), 1.23 KiB | 420.00 KiB/s, done.
+        Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+        To gitlab.rebrainme.com:devops_users_repos/1168/rebrain-devops-task1.git
+        * [new branch]      master -> master
+        branch 'master' set up to track 'origin/master'.
+
+    git push -u bitbucket master
+        The authenticity of host 'bitbucket.org (104.192.141.1)' can't be established.
+        RSA key fingerprint is SHA256:zzXQOXSRBEiUtuE8AikJYKwbHaxvSc0ojez9YXaGp1A.
+        This key is not known by any other names
+        Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+        Warning: Permanently added 'bitbucket.org' (RSA) to the list of known hosts.
+        Enumerating objects: 6, done.
+        Counting objects: 100% (6/6), done.
+        Delta compression using up to 4 threads
+        Compressing objects: 100% (5/5), done.
+        Writing objects: 100% (6/6), 1.23 KiB | 315.00 KiB/s, done.
+        Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+        To bitbucket.org:2kota2/rebrain-devops-task1.git
+        * [new branch]      master -> master
+        branch 'master' set up to track 'bitbucket/master'.
+
+    git push -u github master
+        git push -u github master
+        Enumerating objects: 6, done.
+        Counting objects: 100% (6/6), done.
+        Delta compression using up to 4 threads
+        Compressing objects: 100% (5/5), done.
+        Writing objects: 100% (6/6), 1.23 KiB | 630.00 KiB/s, done.
+        Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+        To github.com:2kota2/rebrain-devops-task1.git
+        * [new branch]      master -> master
+        branch 'master' set up to track 'github/master'.
+
+Клонировать репозиторий
+
+    cd ..
+    git clone git@gitlab.rebrainme.com:rebrainme-devops/git-checkout.git
+
+        Cloning into 'git-checkout'...
+        remote: Enumerating objects: 26, done.
+        remote: Total 26 (delta 0), reused 0 (delta 0), pack-reused 26
+        Receiving objects: 100% (26/26), 4.94 KiB | 1.23 MiB/s, done.
+        Resolving deltas: 100% (5/5), done.
+
+Переключиться на 3-й от начала коммит (**e8b3ec06b**).
+
+    cd git-checkout/
+    git checkout e8b3ec06b
+
+Просмотреть содержимое файла *deleted.txt*.
+
+    cat deleted.txt
+        969507679bbd60f2429968ce06036a5b

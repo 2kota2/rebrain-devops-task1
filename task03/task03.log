@@ -1,0 +1,49 @@
+## GIT 03: Создание тегов для коммитов
+
+Проверка истории
+
+    git log
+    commit 32f8dac4deae23139e1599f553a97cf3e7046aed (HEAD -> master, origin/master, github/master, bitbucket/master)
+    Author: Uladzimir Minin <uladzimir.minin@gmail.com>
+    Date:   Fri May 6 15:53:29 2022 +0300
+
+        Added nginx.conf file
+
+    commit 1a9cfc0707069af970df68d77df4d0ae9adba062
+    Author: Uladzimir Minin <uladzimir.minin@gmail.com>
+    Date:   Fri May 6 15:52:07 2022 +0300
+
+        Added README.md file
+
+Добвление тега к коммиту с добавлением **nginx.conf**
+
+    git tag v0.1 32f8dac4d
+
+Проверка истории
+
+    git log
+        commit 32f8dac4deae23139e1599f553a97cf3e7046aed (HEAD -> master, tag: v0.1, origin/master, github/master, bitbucket/master)
+        Author: Uladzimir Minin <uladzimir.minin@gmail.com>
+        Date:   Fri May 6 15:53:29 2022 +0300
+
+            Added nginx.conf file
+
+        commit 1a9cfc0707069af970df68d77df4d0ae9adba062
+        Author: Uladzimir Minin <uladzimir.minin@gmail.com>
+        Date:   Fri May 6 15:52:07 2022 +0300
+
+            Added README.md file
+
+Отправка тега в удаленный репозиторий
+
+    git push origin v0.1
+        Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+        To gitlab.rebrainme.com:devops_users_repos/1168/rebrain-devops-task1.git
+        * [new tag]         v0.1 -> v0.1
+
+
+Проверить тег на удаленном репозитории
+[https://gitlab.rebrainme.com/devops_users_repos/1168/rebrain-devops-task1/-/tags](https://gitlab.rebrainme.com/devops_users_repos/1168/rebrain-devops-task1/-/tags)
+
+Ссылка на удаленный репозиторий
+[git@gitlab.rebrainme.com:devops_users_repos/1168/rebrain-devops-task1.git](git@gitlab.rebrainme.com:devops_users_repos/1168/rebrain-devops-task1.git)

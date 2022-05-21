@@ -1,0 +1,46 @@
+# GIT 14: Создание pull requests в собственный репозиторий
+
+    git clone git@gitlab.rebrainme.com:rebrainme-devops/git-rebase.git
+    cd git-rebase
+
+    git checkout develop
+    git checkout feature
+    git checkout master
+    git remote remove origin
+
+    git remote add origin git@gitlab.rebrainme.com:devops_users_repos/1168/git-rebase-14.git
+
+    git push -u origin --all
+
+    [git-rebase 14: feature branch to develop branches](https://gitlab.rebrainme.com/devops_users_repos/1168/git-rebase-14/-/merge_requests/1)
+    [git-rebase 14: Develop branch to master](https://gitlab.rebrainme.com/devops_users_repos/1168/git-rebase-14/-/merge_requests/2)
+
+    cd ..
+    git clone git@gitlab.rebrainme.com:rebrainme-devops/git-merge.git
+    cd git-merge
+    git checkout develop
+    git checkout feature
+    git checkout master
+    git remote remove origin
+
+    git remote add origin git@gitlab.rebrainme.com:devops_users_repos/1168/git-merge-14.git
+    git push -u origin --all
+
+    [git-merge 14: Feature to Develop](https://gitlab.rebrainme.com/devops_users_repos/1168/git-merge-14/-/merge_requests/1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

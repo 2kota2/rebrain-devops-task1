@@ -1,0 +1,52 @@
+# GIT 16: Git Flow - схема работы с Git
+
+    mkdir last && last    
+    git init
+    vim README.md
+    git add README.md
+    git commit -m "The 'last' repo is added"
+    vim .gitignore
+    git add .gitignore
+    git commit -m "Added .gitignore file"
+
+    git checkout -b develop
+    vim last.py
+    git add last.py
+    git commit -m "Added last.py"
+
+    vim .gitignore
+    git add .gitignore
+    git commit -m "Added some directories to .gitignore"
+
+    git checkout -b feature
+    vim last.py
+    git add last.py
+    git commit -m "Added some decorated elements to last.py"
+
+    git checkout develop
+    python last.py > message.txt
+    git add message.txt
+    git commit -m "Added result message from last.py"
+
+    git remote add origin git@gitlab.rebrainme.com:devops_users_repos/1168/my_last.git
+    git push -u origin --all
+
+    дальше 2 pull request on the gitlab
+    git pull origin master
+
+    git log --all --oneline --graph
+*   49263e0 (HEAD -> master, origin/master) Merge branch 'develop' into 'master'
+|\
+| *   7557e7e (origin/develop) Merge branch 'feature' into 'develop'
+| |\
+| | * 029c874 (origin/feature, feature) Added some decorated elements to last.py
+| * | 66a32de (develop) Added result message from last.py
+| |/
+| * 24f98ff Added some directories to .gitignore
+| * db219b2 Added last.py
+|/
+* cbac942 Added .gitignore file
+* 6d09a46 The 'last' repo is added
+
+    git tag release_1.1 49263e0
+    git push origin --tags

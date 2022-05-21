@@ -1,0 +1,39 @@
+# GIT 11: (OPTIONAL) Объединение коммитов с помощью rebase
+
+    mkdir git-squash-2/
+    cd git-squash-2/
+    git clone git@gitlab.rebrainme.com:rebrainme-devops/git-squash.git
+
+    cd git-squash/
+    git checkout develop
+
+    git log --oneline
+        d658f11 (HEAD -> develop, origin/develop) Fix #5 Final!!!
+        c8957cc Fix #4
+        1346f7f Fix #3
+        ab12f7e Fix #2
+        847d11d Fix #1
+        a452cc0 Simplified sum function
+        721bbd4 (origin/show, origin/master, origin/HEAD, master) Added main server file
+        d2594d0 Initial commit
+
+    git log --oneline | wc -l
+        8
+    
+    git reset --soft HEAD~7
+    git commit --amend
+    [develop 10e8c50] Initial commit
+        Author: Vasiliy I Ozerov <vasiliyozerov@gmail.com>
+        Date: Wed Jan 9 02:17:44 2019 +0300
+        2 files changed, 53 insertions(+)
+        create mode 100644 README.md
+        create mode 100644 main.go
+
+
+    реактируем оставляем запись для первого коммита (Initial commit)
+
+    git log --oneline
+        10e8c50 (HEAD -> develop) Initial commit
+
+
+    git remote add origin git@gitlab.rebrainme.com:devops_users_repos/1168/git-squash-2.git

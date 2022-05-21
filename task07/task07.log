@@ -1,0 +1,14 @@
+# GIT 07: Слияние веток с помощью merge
+
+    git checkout master
+    git merge develop
+    Updating a843e68..81fc337
+    Fast-forward
+     nginx.conf | 7 +++++--
+     1 file changed, 5 insertions(+), 2 deletions(-)
+
+    git push origin master
+    Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+    To gitlab.rebrainme.com:devops_users_repos/1168/rebrain-devops-task1.git
+       a843e68..81fc337  master -> master
+

@@ -1,0 +1,16 @@
+# GIT 15: Создание pull requests в сторонний репозиторий
+
+    git clone git@gitlab.rebrainme.com:devops_users_repos/1168/git-checkout.git
+    git checkout feature
+    git checkout patch-1
+    git checkout patch-2
+    git checkout master
+
+    git checkout feature
+    vim money.txt
+    git status
+    git add money.txt
+    git commit -m "Some interesting facts about money"
+    git push origin feature
+
+    [Draft: Some interesting facts about money](https://gitlab.rebrainme.com/rebrainme-devops/git-checkout/-/merge_requests/1041)

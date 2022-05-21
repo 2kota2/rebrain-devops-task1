@@ -1,0 +1,154 @@
+# GIT 08: Разрешение конфликтов при слиянии
+
+    cd ..
+    git clone git@gitlab.rebrainme.com:rebrainme-devops/git-merge.git
+        Cloning into 'git-merge'...
+        remote: Enumerating objects: 18, done.
+        remote: Total 18 (delta 0), reused 0 (delta 0), pack-reused 18
+        Receiving objects: 100% (18/18), done.
+        Resolving deltas: 100% (6/6), done.
+    cd git-merge/
+    git checkout develop
+    git log
+        commit 0b928bae1cdcf83660a30a9705eebb1fe163e8b3 (HEAD -> develop, origin/develop)
+        Author: Vasiliy I Ozerov <vasiliyozerov@gmail.com>
+        Date:   Wed Jan 9 01:12:15 2019 +0300
+
+    Simplified sum function
+
+    git checkout feature
+    git log
+        commit 0c220ce949a4e1329514b87575288e71b6381611 (HEAD -> feature, origin/feature)
+        Author: Vasiliy I Ozerov <vasiliyozerov@gmail.com>
+        Date:   Wed Jan 9 01:13:15 2019 +0300
+
+    Formatted some code
+    
+    git checkout master
+    git branch
+        develop
+        feature
+      * master
+
+    git log
+        commit 9ca6af1919a5f86826138e7c05e91f9584f85480 (HEAD -> master, origin/master, origin/HEAD)
+        Author: Vasiliy I Ozerov <vasiliyozerov@gmail.com>
+        Date:   Wed Jan 9 01:15:18 2019 +0300
+
+            Changed returned params in sum function
+
+    git checkout develop
+
+    git merge feature
+        Auto-merging main.go
+        CONFLICT (content): Merge conflict in main.go
+        Automatic merge failed; fix conflicts and then commit the result.
+
+    git show
+        commit 0b928bae1cdcf83660a30a9705eebb1fe163e8b3 (HEAD -> develop, origin/develop)
+        Author: Vasiliy I Ozerov <vasiliyozerov@gmail.com>
+        Date:   Wed Jan 9 01:12:15 2019 +0300
+
+            Simplified sum function
+
+        diff --git a/main.go b/main.go
+        index 35dfd83..c17ff58 100644
+        --- a/main.go
+        +++ b/main.go
+        @@ -40,6 +40,5 @@ func main() {
+        }
+
+        func sum (a, b int) int {
+        -  t := a + b
+        -  return t
+        +  return a + b
+        }
+
+    vim main.go
+
+    git add main.go
+    git commit
+        [develop d19fd35] Merge branch 'feature' into develop
+
+
+     git checkout master
+        Switched to branch 'master'
+        Your branch is up to date with 'origin/master'.
+
+    git merge develop
+        Auto-merging main.go
+        CONFLICT (content): Merge conflict in main.go
+        Automatic merge failed; fix conflicts and then commit the result.
+
+    git show
+        commit 9ca6af1919a5f86826138e7c05e91f9584f85480 (HEAD -> master, origin/master, origin/HEAD)
+        Author: Vasiliy I Ozerov <vasiliyozerov@gmail.com>
+        Date:   Wed Jan 9 01:15:18 2019 +0300
+
+            Changed returned params in sum function
+
+        diff --git a/main.go b/main.go
+            index ff11b92..524c959 100644
+            --- a/main.go
+            +++ b/main.go
+            @@ -40,6 +40,6 @@ func main() {
+            }
+
+            func sum (a, b int) int {
+            -  t := a + b
+            +  t := b + a
+            return t
+            }
+
+    git status
+        On branch master
+        Your branch is up to date with 'origin/master'.
+
+        You have unmerged paths.
+        (fix conflicts and run "git commit")
+        (use "git merge --abort" to abort the merge)
+
+        Unmerged paths:
+        (use "git add <file>..." to mark resolution)
+                both modified:   main.go
+
+        Untracked files:
+        (use "git add <file>..." to include in what will be committed)
+                main_BACKUP_1545.go
+                main_BASE_1545.go
+                main_LOCAL_1545.go
+                main_REMOTE_1545.go
+
+        no changes added to commit (use "git add" and/or "git commit -a")
+    
+    vim main.go
+    git add main.go
+    # manual mode for resolving merge conflict
+    git commit
+        [master a9cb4b6] Merge branch 'develop'
+    git remote remove origin
+    git remote add origin git@gitlab.rebrainme.com:devops_users_repos/1168/rebrain-devops-task-merge.git
+
+    git push -u origin --all
+        Enumerating objects: 21, done.
+    Counting objects: 100% (21/21), done.
+    Delta compression using up to 4 threads
+    Compressing objects: 100% (14/14), done.
+    Writing objects: 100% (21/21), 2.63 KiB | 1.31 MiB/s, done.
+    Total 21 (delta 7), reused 18 (delta 6), pack-reused 0
+    remote:
+    remote: To create a merge request for develop, visit:
+    remote:   https://gitlab.rebrainme.com/devops_users_repos/1168/rebrain-devops-task-merge/-/merge_requests/new?merge_request%5Bsource_branch%5D=develop
+    remote:
+    remote:
+    remote: To create a merge request for feature, visit:
+    remote:   https://gitlab.rebrainme.com/devops_users_repos/1168/rebrain-devops-task-merge/-/merge_requests/new?merge_request%5Bsource_branch%5D=feature
+    remote:
+    To gitlab.rebrainme.com:devops_users_repos/1168/rebrain-devops-task-merge.git
+    * [new branch]      develop -> develop
+    * [new branch]      feature -> feature
+    * [new branch]      master -> master
+    branch 'develop' set up to track 'origin/develop'.
+    branch 'feature' set up to track 'origin/feature'.
+    branch 'master' set up to track 'origin/master'.
+    
